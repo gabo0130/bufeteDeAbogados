@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BufeteApplication<bufete>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.bufete.bufete.BufeteApplication",
+            "projectName": "bufete",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
