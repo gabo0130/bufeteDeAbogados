@@ -2,10 +2,7 @@ package com.bufete.bufete.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.bufete.bufete.entity.Caso;
 import com.bufete.bufete.entity.Proceso;
-import com.bufete.bufete.repository.CasoRepository;
 import com.bufete.bufete.repository.ProcesoRepository;
 
 import java.time.LocalDate;
@@ -17,8 +14,6 @@ public class ProcesoService {
     @Autowired
     private ProcesoRepository procesoRepository;
 
-    @Autowired
-    private CasoRepository casoRepository;
 
     public Proceso guardarProceso(Proceso proceso) {
         return procesoRepository.save(proceso);
@@ -45,9 +40,8 @@ public class ProcesoService {
     }
     
     public List<Proceso> obtenerProcesosProximosAVencerse() {
-        LocalDate fechaActual = LocalDate.now();
-        List<Caso> casosProximosAVencerse = casoRepository.findByFechaVencimientoLessThanEqual(fechaActual);
-        return procesoRepository.findByCasoIn(casosProximosAVencerse);
+        LocalDate fechaLimite = LocalDate.now().plusDays(3);
+        return procesoRepository.findProcesosProximosAVencerse(fechaLimite);
     }
 
 }

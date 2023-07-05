@@ -20,6 +20,13 @@ public class JuzgadoService {
     public List<Juzgado> obtenerTodosLosJuzgados() {
         return juzgadoRepository.findAll();
     }
+    public List<Juzgado> obtenerJuzgadosPorNombre(String nombre) {
+        return juzgadoRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+    
+    public List<Juzgado> obtenerJuzgadosOrdenadosPorNombre() {
+        return juzgadoRepository.findAllByOrderByNombreAsc();
+    }
 
     public Juzgado obtenerJuzgadoPorId(Long id) {
         return juzgadoRepository.findById(id)

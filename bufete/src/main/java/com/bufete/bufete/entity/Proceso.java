@@ -2,6 +2,9 @@ package com.bufete.bufete.entity;
 
 import java.time.LocalDate;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 
 @Getter
@@ -20,6 +23,7 @@ public class Proceso {
     private String tipo;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "juzgado_id")
     private Juzgado juzgado;
 
